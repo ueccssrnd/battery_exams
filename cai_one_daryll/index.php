@@ -7,7 +7,7 @@
     <body>
         <h1>CAI One - Daryll</h1>
         <?php
-        $connection = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
+        include 'dbc.php';
 
         function seed_questions($count) {
             $connection = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
@@ -114,7 +114,6 @@
 
 
             <?php
-//            seed_questions(50);
             $statement = $connection->prepare('SELECT * FROM questions');
             $statement->execute();
             $statement->bind_result($question_id, $question, $answer, $question_value);
