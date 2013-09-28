@@ -7,7 +7,7 @@ class Db {
     public function __construct() {
         $user = 'root';
         $pass = '';
-        $dbname = 'cai';
+        $dbname = 'cai_one_daryll';
         $dbhost = 'localhost';
         $dbtype = 'mysql';
         $this->connection = new PDO("$dbtype:host=$dbhost;dbname=$dbname", $user, $pass);
