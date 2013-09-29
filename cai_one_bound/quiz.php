@@ -8,7 +8,7 @@
         <h1>CAI One - Daryll</h1>
         <hr/>
         <?php
-        $connection = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
+        include 'dbc.php';
 
         if (isset($_GET['take_quiz'])) {
             $question_bank = array();
@@ -23,6 +23,7 @@
             ?>
             <form action="quiz.php">
                 <input type="hidden" name="grade_quiz">
+                <input type="hidden" name="user_name" value="<?php echo $_GET['user_name']; ?>">
                 <?php
                 foreach ($questions as $question) {
                     echo '<label for="' . $question['question_id'] . '">' . $question['question'] . '</label>';
@@ -34,8 +35,6 @@
         if (isset($_GET['grade_quiz'])) {
             $score = 0;
             $keys = array_keys($_GET);
-            unset($keys[0]);
-            echo var_dump($keys);
             foreach ($keys as $question) {
                 $result = $connection->query('SELECT * FROM questions WHERE question_id = "' . $question . '" AND answer= "' . $_GET[$question] . '";');
                 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -43,7 +42,7 @@
                 }
             }
 
-            echo '<h1>' . $score . '</h1>';
+            echo '<h1>Total score for ' . $_GET['user_name'] . ' :' . $score . '</h1>';
         }
         ?>
 
