@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CAI One</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      table td {
+        padding: 5px 10px 5px 10px;
+      }      
+      table td, table th {
+        border: 1px solid #ccc;
+      }
+      table tr:first-child th {
+        border-top: 0;
+      }
+      table tr:last-child td {
+        border-bottom: 0;
+      }
+      table tr td:first-child,
+      table tr th:first-child {
+        border-left: 0;
+      }
+      table tr td:last-child,
+      table tr th:last-child {
+        border-right: 0;
+      }
+      
+      .module{
+        vertical-align: top;
+        display: inline-block;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <table>
+
+      </table>
+    </div>
+    <div id="add" class="module">
+      <h1>Add Question</h1>
+      <form id="frm-add">
+        <input type="hidden" name="create" value="true">
+        <label>Question:</label><br>
+        <input type="text" name="question"><br>
+        <label>Answer:</label><br>
+        <input type="text" name="answer"><br>
+        <label>Value:</label><br>
+        <input type="text" name="value"><br>
+        <button id="btn-add">Add</button>
+      </form>
+    </div>
+    <div id="update" class="module"></div>
+    <div id="search" class="module">
+      <h1>Search</h1>
+      <input type="search">
+    </div>
+    <script src="public/js/jquery.js"></script>
+    <script>
+      $('input[type="search"]').on('blur', function(){
+        getContents();
+      });
+      $('input[type="search"]').on('keyup', function(){
+        if($(this).val()){getContents()}
+        var $tpl = [];
+        $.get('questions/search/' + $(this).val(), function(re){
+          $.each(JSON.parse(re), function(key, value) {
+            $tpl.push("<tr>");
+            $tpl.push("<td>" + value.question_id + "</td>");
+            $tpl.push("<td>" + value.question + "</td>");
+            $tpl.push("<td>" + value.answer + "</td>");
+            $tpl.push("<td>" + value.question_value + "</td>");
+            $tpl.push("<td><a class='update' data-id='" + value.question_id + "' href='update'>Update</a></td>");
+            $tpl.push("<td><a class='delete' data-id='" + value.question_id + "' href='delete'>Delete</a></td>");
+            $tpl.push("</tr>");
+          });
+          $('#content').find('table').html($tpl);
+        });
+      });
+      
+      $('#content').on('click', '.delete', function(e) {
+        e.preventDefault();
+        id = $(this).data('id');
+        deleteQuestion(id);
+        return false;
+      });
+
+      $('#content').on('click', '.update', function(e) {
+        e.preventDefault();
+        id = $(this).data('id');
+        showItem(id);
+        return false;
+      });
+      
+      $('#update').on('click', '#btn-update', function(e) {
+        e.preventDefault();
+        id = $(this).data('id');
+        updateItem(id);
+        return false;
+      });
+      
+      $('#add').on('click', '#btn-add', function(e) {
+        e.preventDefault();
+        obj = $('#frm-add').serializeArray();
+        addItem(obj);
+        return false;
+      });
+      
+      function addItem(obj) {
+        $.post('questions/create', obj, function(re) {
+          console.log(JSON.parse(re));
+        }).done(function() {
+          getContents();
+        });
+      }
+      
+      function getContents() {
+        $tpl = [];
+        $.get('questions/find', function(re) {
+          $.each(JSON.parse(re), function(key, value) {
+            $tpl.push("<tr>");
+            $tpl.push("<td>" + value.question_id + "</td>");
+            $tpl.push("<td>" + value.question + "</td>");
+            $tpl.push("<td>" + value.answer + "</td>");
+            $tpl.push("<td>" + value.question_value + "</td>");
+            $tpl.push("<td><a class='update' data-id='" + value.question_id + "' href='update'>Update</a></td>");
+            $tpl.push("<td><a class='delete' data-id='" + value.question_id + "' href='delete'>Delete</a></td>");
+            $tpl.push("</tr>");
+          });
+          $('#content').find('table').html($tpl);
+        });
+      }
+      ;
+
+      function deleteQuestion(id) {
+        $.post('questions/delete', {id: id}, function(re) {
+          console.log(JSON.parse(re));
+        }).done(function() {
+          getContents();
+        });
+      }
+      ;
+
+      
+      
+      function updateItem(id) {
+        question = $('#question').val();
+        answer = $('#answer').val();
+        value = $('#value').val();
+        $.post('questions/update', {_method: 'update', id: id, question: question, answer: answer, value: value}, function(re){
+          console.log(re);
+        }).done(getContents);
+      }
+
+      function showItem(id) {
+        tpl = $("<div id='item'><h1>Update Question</h1></div>");
+        $.get('questions/find/' + id, function(re) {
+          data = JSON.parse(re);
+          tpl.append("<label>Question</label><br>");
+          tpl.append("<textarea id='question'>" + data[0].question + "</textarea><br>");
+          tpl.append("<label>Answer:</label><br>");
+          tpl.append("<input type=text id='answer' value='" + data[0].answer + "'><br>");
+          tpl.append("<label>Value:</label><br>");
+          tpl.append("<input type=text id='value' value='" + data[0].question_value + "'><br>");
+          tpl.append("<button id='btn-update' data-id=" + id + ">Update</button>")
+        }).done(function(){
+          $('#update').html(tpl);
+        });
+      }
+
+      $(document).ready(function() {
+        getContents();
+      });
+    </script>
+  </body>
+</html>

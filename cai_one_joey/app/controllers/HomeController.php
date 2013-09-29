@@ -3,8 +3,6 @@
 class HomeController {
     
     public function index() {
-        echo json_encode(array('message' => 'welcome to index'));
+        include('app/views/home.html');
     }
-    
-    
 }
