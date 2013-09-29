@@ -9,14 +9,16 @@
         <hr/>
         <?php
         include 'utilities.php';
-        
 
-        $product_code = strtoupper(substr($_GET['product_description'], 0, 3)
-                . '-' . str_pad(rand(1, 100000), 5, '0', STR_PAD_LEFT)
-                . '-' . date('dMY', time()));
+
+
 
         if (isset($_GET['db'])) {
             if ($_GET['action'] == 'add') {
+                $product_code = strtoupper(substr($_GET['product_description'], 0, 3)
+                        . '-' . str_pad(rand(1, 100000), 5, '0', STR_PAD_LEFT)
+                        . '-' . date('dMY', time()));
+                
                 mysqli_query($dbc, 'INSERT INTO PRODUCTS (product_code, product_description,
                 stock_level, date_created, quantity) VALUES ("'
                         . $product_code . '", "'
