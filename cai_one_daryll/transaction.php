@@ -23,8 +23,6 @@
             echo '<h1>Score for ' . $_GET['user'] . ': ' . $score . '<h1>';
         }
 
-
-
         if (isset($_GET['create_quiz'])) {
             ?>
             <form action="transaction.php">

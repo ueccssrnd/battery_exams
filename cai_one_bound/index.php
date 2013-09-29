@@ -9,7 +9,7 @@
         <h1>CAI One - Daryll</h1>
         <?php
         include 'dbc.php';
-
+        
         function seed_questions($count) {
             $connection = mysqli_connect('localhost', 'root', '', 'cai_one_bound');
             for ($i = 0; $i < $count; $i++) {

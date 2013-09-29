@@ -10,9 +10,6 @@
         <?php
         include 'utilities.php';
 
-
-
-
         if (isset($_GET['db'])) {
             if ($_GET['action'] == 'add') {
                 $product_code = strtoupper(substr($_GET['product_description'], 0, 3)
@@ -25,6 +22,8 @@
                         . $_GET['product_description'] . '", "'
                         . $_GET['stock_level'] . '", "' . date('F d, Y') . '", "'
                         . $_GET['stock_level'] * 0.2 . '");');
+            } else if ($_GET['action'] == 'edit') {
+                
             }
         }
 
@@ -44,6 +43,5 @@
             <input type="number" name="stock_level"/>
             <input type="submit"/>
         </form>
-
     </body>
 </html>

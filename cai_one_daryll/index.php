@@ -9,12 +9,13 @@
         $dbc = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
 
         function generate_random($count) {
-            $dbc = mysqli_connect('localhost', 'root', '', 'cai2');
+            $dbc = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
             for ($i = 0; $i < $count; $i++) {
                 mysqli_query($dbc, "INSERT INTO QUESTIONS (question, answer, question_value)
                     VALUES ('question" . $i . "', 'answer" . $i . "', " . 5 . ");");
             }
         }
+        
 
         if (isset($_GET['intent'])) {
             if ($_GET['intent'] == 'add') {
