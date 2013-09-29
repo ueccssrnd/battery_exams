@@ -33,7 +33,7 @@ class QuestionsController {
         if (!isset($question) || !isset($answer) || !isset($value)) {
             die(json_encode(array('message'=>'all are required fields')));
         } else {
-            // do work
+            echo json_encode(array('created' => $this->model->create($question, $answer, $value)));
         }
     }
     
@@ -43,10 +43,13 @@ class QuestionsController {
             echo json_encode(array('message'=>'method type (PUT) must explicitly defined'));
         } else {
             $id = filter_input(INPUT_POST, 'id');
+            $question = filter_input(INPUT_POST, 'question');
+            $answer = filter_input(INPUT_POST, 'answer');
+            $value = filter_input(INPUT_POST, 'value');
             if (!isset($id)) {
                 echo json_encode(array('message'=>'question id needs to be specified'));
             } else {
-                // do work
+                echo json_encode(array('updated' => $this->model->update($id, $question, $answer, $value)));
             }
         }
     }
@@ -60,7 +63,7 @@ class QuestionsController {
             if (!isset($id)) {
                 echo json_encode(array('message'=>'question id needs to be specified'));
             } else {
-                // do work
+                echo json_encode(array('deleted' => $this->model->delete($id)));
             }
         }
     }
@@ -68,6 +71,8 @@ class QuestionsController {
     public function search($key) {
         if (!isset($key)) {
             echo json_encode(array('message'=>'provide search key'));
+        } else {
+            echo json_encode($this->model->search($key));
         }
     }
     
