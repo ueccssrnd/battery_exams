@@ -6,28 +6,29 @@
     </head>
     <body>
         <?php
-        $dbc = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
-
-        function generate_random($count) {
-            $dbc = mysqli_connect('localhost', 'root', '', 'cai_one_daryll');
-            for ($i = 0; $i < $count; $i++) {
-                mysqli_query($dbc, "INSERT INTO QUESTIONS (question, answer, question_value)
-                    VALUES ('question" . $i . "', 'answer" . $i . "', " . 5 . ");");
-            }
-        }
+        include 'utilities.php';
         
-
+//        Uncomment this line if you want to create the default questions
+//        seed_questions(50);
+        
+//        Check if form is submitted via hidden input "intent", Add Edit Delete
         if (isset($_GET['intent'])) {
             if ($_GET['intent'] == 'add') {
                 mysqli_query($dbc, "INSERT INTO QUESTIONS (question, answer, question_value)
                     VALUES ('" . $_GET['question'] . "', '" . $_GET['answer'] . "', " . $_GET['question_value'] . ");");
+                echo '<em>Added ' . $_GET['question'] . '</em>';
             } else if ($_GET['intent'] == 'edit') {
                 mysqli_query($dbc, 'UPDATE questions SET question = "' . $_GET['question'] . '", answer = "' . $_GET['answer'] . '",  question_value = ' . $_GET['question_value'] . ' WHERE id = ' . $_GET['id'] . ';');
+                echo '<em>Edited ' . $_GET['question'] . '</em>';
             } else if ($_GET['intent'] == 'delete') {
                 mysqli_query($dbc, 'DELETE FROM questions where id = ' . $_GET['id'] . ';');
+                echo '<em>Deleted ' . $_GET['question'] . '</em>';
             } else if ($_GET['intent'] == 'search') {
-                $result = mysqli_query($dbc, "SELECT * FROM questions where question like '%" . $_GET['question'] . "%' or answer like '%" . $_GET['answer'] . "%';");
+//                To implement search: Use LIKE keyword. Important: %
+                $result = mysqli_query($dbc, "SELECT * FROM questions WHERE question LIKE '%" . $_GET['question'] . "%' or answer like '%" . $_GET['answer'] . "%';");
+                echo '<em>Search results for ' . $_GET['question'] . ' and ' . $_GET['answer'] . '</em>';
                 ?>
+        <!--Generate table to make it easier to find errors-->
                 <table>
                     <tr><td>ID</td><td>Question</td><td>Answer</td><td>Value</td></tr>
 
@@ -41,7 +42,7 @@
             }
         }
         ?>
-        <h1>Quizzes</h1>
+        <h1>All Questions</h1>
         <form action="index.php">
             <select name="intent">
                 <option value="add">Add</option>
@@ -66,6 +67,7 @@
         <?php
         $result = mysqli_query($dbc, "SELECT * FROM questions;");
         ?>
+        <h1>All Questions</h1>
         <table>
             <tr><td>ID</td><td>Question</td><td>Answer</td><td>Value</td></tr>
 
