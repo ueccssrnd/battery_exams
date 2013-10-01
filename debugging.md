@@ -15,27 +15,23 @@ isang database kalagitnaan, at least may backup ka.
 * `CREATE DATABASE` and `CREATE TABLE` statement, wag kayong papasok sa room ng 
 hindi niyo alam to, isa to sa pinaka-unang kelangan eh. Dapat less than 5 
 minutes yung pag-create ng table.
-* Add-edit-delete-search-display. Dapat tapos to in 1 hour.
+* Add-edit-delete-search-display. Kayang kaya niyo to in less than 1 hour. :)
 * String functions (`substring`, `length`, `charAt`, formatting (2 zeroes 
 para sa pera)
 * Date functions (get current date, format date, subtract date 
 (especially sa library), check if ano ang date or ano ang time)
 * Random: Paano kumuha ng random number from 1-100, or 1-1000, or kung ano man,
  kung paano mag-pad ng zeroes, etc.
-3. Jutsus (helpful to learn)
+* If may time, advanced SQL statements: `ORDER BY RAND`, `MAX`, `MIN`, `TOP`.
 
-* Advanced SQL statements: `ORDER BY RAND`, `MAX`, `MIN`, `TOP`.
-* Keyboard shortcuts. `Ctrl+K Ctrl+C` para mag-comment, `Ctrl+K Ctrl+U` para mag
- uncomment.
-4. I-condition mo yung utak mo na maging yung pinaka-masaya pagpasok ng lab. 
+3. I-condition mo yung utak mo na maging yung pinaka-masaya pagpasok ng lab. 
 Which means na isuot mo ang favorite mo na shirt, and favorite mo na pants, 
 kainin mo ang favorite mo na food, makinig ka sa favorite mo na music, (if 
 religious, pray).
 
-Debugging Tips
-==============
+##Debugging Tips
 
-1. Leave message boxes everywhere para makita kung ano value ng variables. 
+__Leave message boxes everywhere para makita kung ano value ng variables.__
 For example, in computation:
 
 `MsgBox("Product code: " & productCode & "index: " & index)`
@@ -43,39 +39,48 @@ For example, in computation:
 At least medyo alam niyo na yung value at each point in time. Inuna namin ito 
 kasi ginagawa ito ng lahat ng programmer. Importante na alam mo kung nasaan ka 
 lagi and kung gumagana ba yung ginagawa mo or not.
-2. Minsan kelangan kausapin ang sarili, di bali nang mag-tunog ewan, at least 
-pumasa! _"Pag ito pumasok sa loop na to, checheck ko kung totoo ito or hindi, 
+
+__Minsan kelangan kausapin ang sarili, di bali nang mag-tunog ewan, at least 
+pumasa!__ _"Pag ito pumasok sa loop na to, checheck ko kung totoo ito or hindi, 
 tapos checheck ko kung totoo tong bagay na to, pag totoo, ganito ang mangyayari, 
 pag hindi..."_. Don't assume na working na kaagad yung code until you go through 
 EACH LINE para maghanap, "saan ba ako nagkakamali"?
-3. SQL: If hindi gumagana yung SQL statement, or may error, check the SQL sa 
-SQL Server or sa Access. As in literal na i-paste mo siya if ayaw gumana. 
-Maglagay ka ng textbox sa form mo na `txtTestSQL` para pwede mo i-copy yung 
+
+__SQL: If may error yung SQL statement, check the SQL sa SQL Server or sa 
+Access.__ As in literal na i-paste mo siya if ayaw gumana. Maglagay ka ng 
+textbox sa form mo na `txtTestSQL` para pwede mo i-copy yung 
 laman sa loob para i-paste mo sa Access, para makita mo kung saang part 
 yung mali sa SQL statement.
 
-4. Wag muna humome-run: Example, sa insert. If di gumagana yung 
+__Wag muna humome-run:__ Example, sa insert. If di gumagana yung 
 `"INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '" txtBoxQuantity.text,"')"`,
 
 * Try niyo muna, walang variables. `"INSERT INTO products VALUES ('99', '93')..."`
 * Then, isang variable. `"INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '93')..."`
 * And dagdag ng dagdag, hanggang gumana na according to the question.
 * Mas madali mag debug kung medyo may idea na kayo kung saan yung problem.
-5. Re: String manipulation. Most of the time, pwedeng gawin na gawa ka ng isang
- for loop na linoo-loop sa isang string. Tapos, i-check mo ang bawat character 
-kung pasok siya sa condition.
+
+Re: String manipulation. __Most of the time, pwedeng gawin na gawa ka ng isang
+ `for` loop na tumatagos sa isang string.__ Tapos, i-check mo ang bawat 
+character kung pasok siya sa condition.
 
     //Bali ipapadaan mo yung isang variable sa bawat character ng isang string
     for (int i = 0; i < str.length; i++){
-    // Check mo if vowel or hindi
+        //Check mo if vowel or hindi
         if (str.charAt(i) == 'AEIOU'){
             System.out.print('vowel');
         }else{
             System.out.print('not vowel');
         }
     }
-6. Okay, na-stuck ka na. Ang gawin mo is: paliitin mo ng paliitin yung problem
- to the point na each step, alam mo na yung dapat mangyayari.
+
+Okay, na-stuck ka na. __Ang gawin mo is: paliitin mo ng paliitin yung problem
+ to the point na kaya mong i-explain ang nangyayari per line, or even part nung 
+line.__ Uulitin ko ito dahil sobrang importante nito. __Dapat naiintindihan mo 
+ang ginagawa ng code mo para ma-fix mo ang bugs sa kanya. Di baling abutin ka 
+ng ilang oras sa pag-prapractice, basta maintindihan mo lang kung ano ginagawa 
+ng code na sinusulat mo.__ Doon mo lang masasabi na "uy, medyo alam ko na ang 
+ginagawa ko". Hopefully by that time, ma-appreciate mo na ang programming. :)
 
 _Sample problem: A product code is generated by combining the first 3 
 alphanumeric characters of the product description followed by a 5-digit random 
@@ -89,8 +94,6 @@ Kelangan ko:
 * Lagyan ng 0 sa harap if maikli yung number
 * Kunin yung date ngayon
 * Ipagsama-sama lahat nito.
-7. Prioritize, tapusin mo na yung mga madadali, huli na yung input validations, 
-try niyo lang paganahin yung minimum requirements.
 
 Galingan niyo!
 --------------
