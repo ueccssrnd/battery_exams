@@ -43,41 +43,37 @@ For example, in computation:
 At least medyo alam niyo na yung value at each point in time. Inuna namin ito 
 kasi ginagawa ito ng lahat ng programmer. Importante na alam mo kung nasaan ka 
 lagi and kung gumagana ba yung ginagawa mo or not.
-
-2. "Rubber duck debugging": When debugging, isipin mo na parang may katabi kang 
-maliit na rubber duck, tas kausapin mo siya... "pag ito pumasok sa loop na to, 
-checheck ko kung totoo ito or hindi, tapos checheck ko kung totoo tong bagay na 
-to, pag totoo, ganito ang mangyayari, pag hindi...". Don't assume na working na 
-kaagad yung code until you go through EACH LINE para maghanap, "saan ba ako 
-nagkakamali"?
-
-Pag tumitingin ka sa isang line tas naiisip mo na walang ginagawa tong line na 
-to, tanggalin mo hehe
-
+2. Minsan kelangan kausapin ang sarili, di bali nang mag-tunog ewan, at least 
+pumasa! _"Pag ito pumasok sa loop na to, checheck ko kung totoo ito or hindi, 
+tapos checheck ko kung totoo tong bagay na to, pag totoo, ganito ang mangyayari, 
+pag hindi..."_. Don't assume na working na kaagad yung code until you go through 
+EACH LINE para maghanap, "saan ba ako nagkakamali"?
 3. SQL: If hindi gumagana yung SQL statement, or may error, check the SQL sa 
-Access or kung saan man. Maglagay ka ng textbox or something na you can 
-copy yung laman sa loob para i-paste mo sa Access, para makita mo kung saang 
-part may mali sa SQL statement. 
+SQL Server or sa Access. As in literal na i-paste mo siya if ayaw gumana. 
+Maglagay ka ng textbox sa form mo na `txtTestSQL` para pwede mo i-copy yung 
+laman sa loob para i-paste mo sa Access, para makita mo kung saang part 
+yung mali sa SQL statement.
 
 4. Wag muna humome-run: Example, sa insert. If di gumagana yung 
-`"INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '" txtBoxQuantity.text,"')"`.
+`"INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '" txtBoxQuantity.text,"')"`,
 
-* Try niyo muna, walang variables. "INSERT INTO products VALUES ('99', '93')..."
-* Then, isang variable. "INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '93')..."
+* Try niyo muna, walang variables. `"INSERT INTO products VALUES ('99', '93')..."`
+* Then, isang variable. `"INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '93')..."`
 * And dagdag ng dagdag, hanggang gumana na according to the question.
 * Mas madali mag debug kung medyo may idea na kayo kung saan yung problem.
-
 5. Re: String manipulation. Most of the time, pwedeng gawin na gawa ka ng isang
  for loop na linoo-loop sa isang string. Tapos, i-check mo ang bawat character 
 kung pasok siya sa condition.
 
-`for (int i = 0; i < str.length; i++){
-    if (str.charAt(i) == 'AEIOU'){
-        System.out.print('vowel');
-    }else{
-        System.out.print('consonant');
+    //Bali ipapadaan mo yung isang variable sa bawat character ng isang string
+    for (int i = 0; i < str.length; i++){
+    // Check mo if vowel or hindi
+        if (str.charAt(i) == 'AEIOU'){
+            System.out.print('vowel');
+        }else{
+            System.out.print('not vowel');
+        }
     }
-}`
 6. Okay, na-stuck ka na. Ang gawin mo is: paliitin mo ng paliitin yung problem
  to the point na each step, alam mo na yung dapat mangyayari.
 
@@ -93,12 +89,14 @@ Kelangan ko:
 * Lagyan ng 0 sa harap if maikli yung number
 * Kunin yung date ngayon
 * Ipagsama-sama lahat nito.
-7. Prioritize, tapusin mo na yung mga madadali, saka mo na lang ayusin yung mga 
-polish polish, huli na yung input validations, try niyo lang paganahin yung 
-minimum requirements.
+7. Prioritize, tapusin mo na yung mga madadali, huli na yung input validations, 
+try niyo lang paganahin yung minimum requirements.
+
+Galingan niyo!
+--------------
 
 __Contributors:__
 
 * [@daryllxd](http://www.github.com/daryllxd)
-* [@CoolStoryPro]https://twitter.com/CoolStoryPro
-* [@
+* [@CoolStoryPro](https://twitter.com/CoolStoryPro)
+* [@josh](https://www.facebook.com/misskananirafaeljoshua)
