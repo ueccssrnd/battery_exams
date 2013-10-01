@@ -100,6 +100,8 @@ Galingan niyo!
 
 __Contributors:__
 
-* [@daryllxd](http://www.github.com/daryllxd)
-* [@CoolStoryPro](https://twitter.com/CoolStoryPro)
-* [@josh](https://www.facebook.com/misskananirafaeljoshua)
+[@daryllxd](http://www.github.com/daryllxd)
+
+[@CoolStoryPro](https://twitter.com/CoolStoryPro)
+
+[@josh](https://www.facebook.com/misskananirafaeljoshua)
