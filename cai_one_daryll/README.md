@@ -1,4 +1,4 @@
-CAI/TUTORIAL/EXPERT SYSTEMS
+CAI/Tutorial/Expert Systems
 ===========================
 
 Create a system that contains the following modules:
@@ -14,3 +14,8 @@ Create a system that contains the following modules:
 2. A module that accepts a name of an examiner and number of questions (5, 10, 15, 20 or 25).  Questions should be given at random order.
 
 *Display examiner’s final score.*
+
+Instructions:
+
+
+Contact [@daryllxd](http://www.github.com/daryllxd) for questions.

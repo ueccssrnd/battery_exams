@@ -10,7 +10,7 @@
         <?php
         include 'utilities.php';
 
-        if (isset($_GET['db'])) {
+        if (isset($_GET['action'])) {
             if ($_GET['action'] == 'add') {
                 $product_code = strtoupper(substr($_GET['product_description'], 0, 3)
                         . '-' . str_pad(rand(1, 100000), 5, '0', STR_PAD_LEFT)
@@ -30,7 +30,6 @@
         echo '<hr/>';
         ?>
         <form action="index.php">
-            <input type="hidden" name="db"/>
             <select name="action">
                 <option value="add">Add</option>
                 <option value="edit">Edit</option>
