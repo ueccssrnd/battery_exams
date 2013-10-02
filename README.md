@@ -7,3 +7,4 @@ Current contributors:
 * [@daryllxd](http://www.github.com/daryllxd)
 * [@joeyhipolito](http://www.github.com/joeyhipolito)
 * [@neilpeter08](http://www.github.com/neilpeter08)
+* [@kyriger](http://www.github.com/kyriger)
