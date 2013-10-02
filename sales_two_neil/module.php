@@ -11,14 +11,14 @@ and open the template in the editor.
     <body>
         <?php
         include 'utilities.php';
-        if(isset($_GET['transaction'])){
-            if($_GET['transaction']=='order'){
+        if (isset($_GET['transaction'])) {
+            if ($_GET['transaction'] == 'order') {
                 $result = mysqli_query($dbc, "SELECT quantity FROM products WHERE code = '" . $_GET['code'] . "';");
                 $res = mysqli_fetch_array($result);
                 $quant = $res['quantity'];
                 $value = $quant + $_GET['quantity'];
                 mysqli_query($dbc, "UPDATE products SET quantity = '" . $value . "' WHERE code = '" . $_GET['code'] . "';");
-            } elseif($_GET['transaction']=="sale"){
+            } elseif ($_GET['transaction'] == "sale") {
                 $result = mysqli_query($dbc, "SELECT quantity FROM products WHERE code = '" . $_GET['code'] . "';");
                 $res = mysqli_fetch_array($result);
                 $quant = $res['quantity'];
@@ -31,8 +31,8 @@ and open the template in the editor.
             <label for="code">Product Code</label>
             <input type="text" name="code">
             <select name="transaction">
-                <option value="order">O</option>
-                <option value="sale">S</option>
+                <option value="order">O (Order)</option>
+                <option value="sale">S (Sale)</option>
             </select>
             <label for="quantity">Quantity</label>
             <input type="text" name="quantity">
@@ -40,12 +40,12 @@ and open the template in the editor.
         </form>
         <table>
             <tr><th>Code</th><th>Description</th><th>Stocks</th><th>Date</th><th>Quantity</th></tr>
-        <?php
-        $result = mysqli_query($dbc,"SELECT * FROM products");
-        while($row = $result->fetch_array(MYSQLI_ASSOC)){
-            echo "<tr><td>" . $row['code'] . "</td><td>" . $row['description'] . "</td><td>" . $row['stocks'] . "</td><td>" . $row['date_created'] . "</td><td>" . $row['quantity'] ."</td></tr>";         
-        }
-        ?>
+            <?php
+            $result = mysqli_query($dbc, "SELECT * FROM products");
+            while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                echo "<tr><td>" . $row['code'] . "</td><td>" . $row['description'] . "</td><td>" . $row['stocks'] . "</td><td>" . $row['date_created'] . "</td><td>" . $row['quantity'] . "</td></tr>";
+            }
+            ?>
         </table>
     </body>
 </html>
