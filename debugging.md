@@ -40,6 +40,12 @@ At least medyo alam niyo na yung value at each point in time. Inuna namin ito
 kasi ginagawa ito ng lahat ng programmer. Importante na alam mo kung nasaan ka 
 lagi and kung gumagana ba yung ginagawa mo or not.
 
+__Sa .NET may tinatawag na Locals, o sort-of simulation ng program na dine-debug mo.
+Ipapakita niya doon kung ano ang value ng bawat variable mo, ng bawat method mo, LAHAT.
+Punta lang sa Debug -- View -- Locals.
+
+Pero mas madali pa rin ang Messageboxes everywhere. :)
+
 __Minsan kelangan kausapin ang sarili, di bali nang mag-tunog ewan, at least 
 pumasa!__ _"Pag ito pumasok sa loop na to, checheck ko kung totoo ito or hindi, 
 tapos checheck ko kung totoo tong bagay na to, pag totoo, ganito ang mangyayari, 
@@ -52,7 +58,31 @@ textbox sa form mo na `txtTestSQL` para pwede mo i-copy yung
 laman sa loob para i-paste mo sa Access, para makita mo kung saang part 
 yung mali sa SQL statement.
 
-__Wag muna humome-run:__ Example, sa insert. If di gumagana yung 
+__Isa pang technique, pag magde-debug ng SQL statements: yung lahat ng gagawin
+mo involving the database, ilagay mo sa loob ng isang try-catch block sa program. Saluhin
+dapat nung catch ang isang generic na exception, tapos i-output mo yung message.
+
+Halimabawa, sa C#.NET:
+    try
+    {
+        connection.Open();
+        command.CommandText = "Insert into Tbl_Books...";
+    } catch (Exception exc)
+    {
+        MessageBox.Show(e.Message)
+    }
+    connection.Close();
+
+__Hindi stack trace (o yung mahabang explanation ng error) yung ipapakita sa MessageBox.
+Madalas one-liner yung mga errors na sasabihin lang niyan. Mga tipong:
+
+__"Incorrect syntax near Tbl_Books"___
+
+Ganu'n.
+
+__Wag muna humome-run:__
+
+Example, sa insert. If di gumagana yung 
 `"INSERT INTO products VALUES ('"& txtBoxPrice.text &"', '" txtBoxQuantity.text,"')"`,
 
 * Try niyo muna, walang variables. `"INSERT INTO products VALUES ('99', '93')..."`
@@ -105,3 +135,5 @@ __Contributors:__
 [@CoolStoryPro](https://twitter.com/CoolStoryPro)
 
 [@josh](https://www.facebook.com/misskananirafaeljoshua)
+
+[@monica] (https://littlemonicat.wordpress.com)
