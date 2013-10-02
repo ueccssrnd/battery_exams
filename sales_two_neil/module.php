@@ -8,16 +8,13 @@
         <?php
         include 'utilities.php';
         if (isset($_GET['transaction'])) {
+            $result = mysqli_query($dbc, "SELECT quantity FROM products WHERE code = '" . $_GET['code'] . "';");
+            $res = mysqli_fetch_array($result);
+            $quant = $res['quantity'];
             if ($_GET['transaction'] == 'order') {
-                $result = mysqli_query($dbc, "SELECT quantity FROM products WHERE code = '" . $_GET['code'] . "';");
-                $res = mysqli_fetch_array($result);
-                $quant = $res['quantity'];
                 $value = $quant + $_GET['quantity'];
                 mysqli_query($dbc, "UPDATE products SET quantity = '" . $value . "' WHERE code = '" . $_GET['code'] . "';");
             } elseif ($_GET['transaction'] == "sale") {
-                $result = mysqli_query($dbc, "SELECT quantity FROM products WHERE code = '" . $_GET['code'] . "';");
-                $res = mysqli_fetch_array($result);
-                $quant = $res['quantity'];
                 $value = $_GET['quantity'] - $quant;
                 mysqli_query($dbc, "UPDATE products SET quantity = '" . $value . "' WHERE code = '" . $_GET['code'] . "';");
             }
