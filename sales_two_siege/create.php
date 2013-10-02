@@ -1,3 +1,4 @@
+<body style="font-family: arial;">
 <?php
     include 'connection.php';
     
@@ -6,6 +7,7 @@
                         . '-' . str_pad(rand(1, 100000), 5, '0', STR_PAD_LEFT)
                         . '-' . date('dMY', time()));
     $stock = $_POST['stock'];
+    $date = strtoupper(date('dMY', time()));
     
     
     if(!$_POST['submit'])
@@ -15,11 +17,11 @@
     }
     else
     {   
-        mysql_query("INSERT INTO sni.sni (`id`, `code`, `desc`, `stock`)
-            VALUES (NULL, '$code', '$desc', '$stock')") or die(mysql_error());
+        mysql_query("INSERT INTO sni.sni (`id`, `code`, `desc`, `stock`, `date`)
+            VALUES (NULL, '$code', '$desc', '$stock', '$date')") or die(mysql_error());
        
         echo "added";
         header('Location: index.php');
     }
 ?>
-
+</body>
