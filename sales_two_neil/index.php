@@ -89,15 +89,8 @@
                     break;
             }
 
-            $rand = (string) (rand(0, 99999));
-            $len = strlen($rand);
-            if ($len < 5) {
-
-                for ($i = 0; $i < 5 - $len; $i++) {
-                    $rand = "0" . $rand;
-                }
-            }
-            $date = (string) (date('jMY'));
+            $rand = str_pad((rand(1, 100000)),5,0);
+            $date = date('jMY');
             $code = strtoupper($gendesc . "-" . $rand . "-" . $date);
             return $code;
         }
