@@ -1,7 +1,3 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,8 +5,26 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
+        <?php       
+        include 'connection.php';
+        $query = "SELECT * FROM sni.sni";        
+        $result = mysql_query($query);
+        
+        while($data = mysql_fetch_array($result))
+        {
+            echo "<p>" . $data['code'] . "</p>";
+            echo "<p>" . $data['desc'] . "</p>";
+            echo "<p>" . $data['stock'] . "</p>";
+            echo "<a href=\"edit.php?id=" .  $data['id'] . "\">EDIT</a>";
+            echo "&nbsp";
+            echo "<a href=\"delete.php?id=" .  $data['id'] . "\">DELETE</a>";
+        }
         ?>
+        <h1> Add Data </h1>
+        <form action ="create.php" method="post"> 
+            DESC<input type ="text" name="desc" value=""/><br/>
+            STOCK<input type ="text" name="stock" value=""/><br/>
+            <input type="submit" name="submit"/>
+        </form>
     </body>
 </html>
