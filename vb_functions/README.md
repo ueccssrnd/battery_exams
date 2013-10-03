@@ -2,5 +2,5 @@ VB.NET Sample Source Code
 =========================
 
 Current contributors:
-* [@jcladion](http://www.facebook.com/ladion)
+* [@jcladion](https://www.facebook.com/jCladion)
 * [@daryllxd](http://www.github.com/daryllxd)
