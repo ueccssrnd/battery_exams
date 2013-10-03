@@ -1,5 +1,4 @@
-Bago magsimula ang battery
-==========================
+##Bago magsimula ang battery
 
 1. Kailangan mo maka-solve ng at least isang sample problem __by yourself__. 
 Solve lang ng solve and try to get it within the 4 hour limit.
@@ -31,6 +30,9 @@ religious, pray).
 
 ##Debugging Tips
 
+__SQL Server, wag Access.__ Bakit? Kasi mas madali mag execute ng SQL statements 
+dun, copy paste lang. Sa Access, kailangan mo pang i-edit yung worksheet view.
+
 __Leave message boxes everywhere para makita kung ano value ng variables.__
 For example, in computation:
 
@@ -40,11 +42,8 @@ At least medyo alam niyo na yung value at each point in time. Inuna namin ito
 kasi ginagawa ito ng lahat ng programmer. Importante na alam mo kung nasaan ka 
 lagi and kung gumagana ba yung ginagawa mo or not.
 
-__Sa .NET may tinatawag na Locals, o sort-of simulation ng program na dine-debug mo.
-Ipapakita niya doon kung ano ang value ng bawat variable mo, ng bawat method mo, LAHAT.
-Punta lang sa Debug -- View -- Locals.
-
-Pero mas madali pa rin ang Messageboxes everywhere. :)
+__(.NET) Pwede mo rin gamitin ang Debug-View-Locals para macheck ang value ng 
+bawat variable.__
 
 __Minsan kelangan kausapin ang sarili, di bali nang mag-tunog ewan, at least 
 pumasa!__ _"Pag ito pumasok sa loop na to, checheck ko kung totoo ito or hindi, 

@@ -19,7 +19,7 @@
 //            Generate the array to hold the questions
             $questions = array();
             $result = mysqli_query($dbc, "SELECT * FROM questions ORDER BY 
-                RAND() LIMIT " . $_GET['numbers'] . ";");
+                RAND() LIMIT $_GET[numbers];");
 
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $questions[] = $row;

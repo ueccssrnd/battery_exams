@@ -11,11 +11,13 @@
         //button pressed
         if (isset($_GET['choice'])) {
             if ($_GET['choice'] == "add") {
+                define('MULTIPLIER', 0.22);
                 $code = generateCode();
                 $date = date('Y-m-d');
-                $quantity = $_GET['stocks'] * .22;
+                $quantity = $_GET['stocks'] * MULTIPLIER;
+                
                 mysqli_query($dbc, "INSERT INTO products(code, description, stocks, date_created, quantity)
-                    values ('" . $code . "', '" . $_GET['description'] . "', '" . $_GET['stocks'] . "', '" . $date . "', '" . $quantity . "');");
+                    values ('$code', '" . $_GET['description'] . "', '" . $_GET['stocks'] . "', '" . $date . "', '" . $quantity . "');");
             } elseif ($_GET['choice'] == 'edit') {
 
                 mysqli_query($dbc, "UPDATE products SET description = '" . $_GET['description'] . "', stocks = '" . $_GET['stocks'] . "' WHERE code = '" . $_GET['code'] . "';");
@@ -70,6 +72,9 @@
         <table>
             <tr><td>Code</td><td>Description</td><td>Stocks</td><td>Date Created</td><td>Quantity</td></tr>
             <?php
+            
+            
+            
             while ($row = $result->fetch_array(MYSQLI_ASSOC))
                 echo '<tr><td>' . $row['code'] . '</td><td>' . $row['description'] . '</td><td>' . $row['stocks'] . '</td><td>' . $row['date_created'] . '</td><td>' . $row['quantity'] . '</td></tr>'
                 ?>
@@ -89,7 +94,7 @@
                     break;
             }
 
-            $rand = str_pad((rand(1, 100000)),5,0);
+            $rand = str_pad((rand(1, 100000)), 5, 0);
             $date = date('jMY');
             $code = strtoupper($gendesc . "-" . $rand . "-" . $date);
             return $code;
