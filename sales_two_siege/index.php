@@ -22,16 +22,26 @@
         
         while($data = mysql_fetch_array($result))
         {
-            echo "- - -";
-            echo "<p>Code: <b>" . $data['code'] . "</b></p>";
+            echo "<table border=1 style=thin><tr>";
+            echo "<p><td>Code: <b>" . $data['code'] . "</b></p>";
             echo "<p>Description: <i>" . $data['desc'] . "</i></p>";
-            echo "<p>Stock Value: " . $data['stock'] . "</p>";
-            echo "<a href=\"edit.php?id=" .  $data['id'] . "\">Edit</a>";
+            echo "<p>Quantity: <b>" . $data['quantity'] . "/" . $data['stock'] . "</b></td></p>";
+            echo "</tr><tr><td><a href=\"edit.php?id=" .  $data['id'] . "\">Edit</a>";
             echo "&nbsp";
-            echo "<a href=\"delete.php?id=" .  $data['id'] . "\">Delete</a>";
+            echo "<a href=\"transaction.php?id=". $data['id'] . "\">Transaction</a>";
+            echo "&nbsp";   
+            echo "<a href=\"delete.php?id=" .  $data['id'] . "\">Delete</a></td></tr>";
             echo "<p></p>";
+            echo "</tr></table>";
+            $quantity = $data['quantity'];
+            $critLevel = $data['stock']*0.22;
+            $desc = $data['desc'];
+            $name = $data['code'];
+            echo "<script> 
+                if('$quantity'<='$critLevel'){alert('$name' + '(' + '$desc' + ')' + ' is low on stock.') ;}
+                    
+                </script>";
         }
         ?>
-        
     </body>
 </html>
