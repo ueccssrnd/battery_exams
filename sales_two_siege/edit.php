@@ -1,3 +1,5 @@
+<title>Edit Data</title>
+<body style="font-family: arial;">
 <?php
     include 'connection.php';
     if(!isset($_POST['submit']))
@@ -7,12 +9,12 @@
         $data = mysql_fetch_array($result);       
     }
 ?>
-<h1> Edit Data </h1>
+<h3> Edit Data </h3>
 <form action ="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
-    DESC<input type ="text" name="desc" value="<?php echo $data['desc']; ?>"/><br/>
-    STOCK<input type ="text" name="stock" value="<?php echo $data['stock']; ?>"/><br/>
+    Product Description:<input type ="text" name="desc" value="<?php echo $data['desc']; ?>"/><br/>
+    Stock Value:<input type ="text" name="stock" value="<?php echo $data['stock']; ?>"/><br/>
     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
-    <input type="submit" name="submit" value ="edit"/>
+    <input type="submit" name="submit" value ="Edit"/>
 </form>
 <?php
     if(isset($_POST['submit']))
@@ -24,3 +26,4 @@
         header('Location: index.php');
     }
 ?>
+</body>
