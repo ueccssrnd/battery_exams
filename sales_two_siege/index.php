@@ -39,7 +39,6 @@
             $name = $data['code'];
             echo "<script> 
                 if('$quantity'<='$critLevel'){alert('$name' + '(' + '$desc' + ')' + ' is low on stock.') ;}
-                    
                 </script>";
         }
         ?>
