@@ -33,8 +33,8 @@
             <select name="action">
                 <option value="add">Add</option>
                 <option value="edit">Edit</option>
-                <option value="delete">Del</option>
-                <option value="search">Search</option>
+                <option value="delete">Del</option> 
+               <option value="search">Search</option>
             </select>
             <label for="product_description">Product Description</label>
             <input type="text" name="product_description"/>
@@ -42,5 +42,6 @@
             <input type="number" name="stock_level"/>
             <input type="submit"/>
         </form>
+        <?php $aw = 3; echo "<script>alert('$aw');</script>"?>
     </body>
 </html>
