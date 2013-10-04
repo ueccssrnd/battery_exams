@@ -50,7 +50,7 @@ SELECT TOP 1 PERCENT * FROM Products ORDER BY Price;
 INSERT INTO Products (ProductCode, ProductDescription, Quantity, Price, 
     MinimumOrder, BulkOrder, CriticalLevel) 
 VALUES ('NID-03212-APR032012', 'Nido Milk', 700, 60, 
-    20, 60, 294)
+    20, 60, 294);
 
 /*
     Update the NID-03212-APR032012, add 100 to quantity. Change critical level 
